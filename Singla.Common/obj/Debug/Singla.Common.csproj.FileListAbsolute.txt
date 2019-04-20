@@ -1,9 +1,0 @@
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\bin\Debug\Singla.Common.dll
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\bin\Debug\Singla.Common.pdb
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\bin\Debug\log4net.dll
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\bin\Debug\log4net.xml
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\obj\Debug\Singla.Common.csprojAssemblyReference.cache
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\obj\Debug\Singla.Common.csproj.CoreCompileInputs.cache
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\obj\Debug\Singla.Common.csproj.CopyComplete
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\obj\Debug\Singla.Common.dll
-D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\obj\Debug\Singla.Common.pdb
