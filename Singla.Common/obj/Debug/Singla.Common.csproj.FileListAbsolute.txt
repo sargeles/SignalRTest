@@ -7,3 +7,12 @@ D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.
 D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\obj\Debug\Singla.Common.csproj.CopyComplete
 D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\obj\Debug\Singla.Common.dll
 D:\object\B_MyObject\signalRtogether\SignalRTest\SignalRTest\SignalRTest\Singla.Common\obj\Debug\Singla.Common.pdb
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\bin\Debug\Singla.Common.dll
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\bin\Debug\Singla.Common.pdb
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\bin\Debug\log4net.dll
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\bin\Debug\log4net.xml
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Singla.Common.csprojAssemblyReference.cache
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Singla.Common.csproj.CoreCompileInputs.cache
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Singla.Common.csproj.CopyComplete
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Singla.Common.dll
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Singla.Common.pdb

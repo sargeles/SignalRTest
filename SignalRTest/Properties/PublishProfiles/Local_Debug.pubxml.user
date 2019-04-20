@@ -27,6 +27,9 @@
     <File Include="bin/EntityFramework.SqlServer.dll">
       <publishTime>10/23/2017 13:15:21</publishTime>
     </File>
+    <File Include="bin/log4net.dll">
+      <publishTime>03/08/2017 19:26:22</publishTime>
+    </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>11/30/2016 16:07:43</publishTime>
     </File>
@@ -160,31 +163,37 @@
       <publishTime>06/27/2016 14:50:24</publishTime>
     </File>
     <File Include="bin/Signal.EF.dll">
-      <publishTime>04/20/2019 16:24:36</publishTime>
+      <publishTime>04/20/2019 19:26:21</publishTime>
     </File>
     <File Include="bin/Signal.EF.dll.config">
       <publishTime>04/20/2019 11:11:38</publishTime>
     </File>
     <File Include="bin/Signal.EF.pdb">
-      <publishTime>04/20/2019 16:24:36</publishTime>
+      <publishTime>04/20/2019 19:26:21</publishTime>
     </File>
     <File Include="bin/Signal.Interface.dll">
-      <publishTime>04/20/2019 16:24:36</publishTime>
+      <publishTime>04/20/2019 19:26:21</publishTime>
     </File>
     <File Include="bin/Signal.Interface.pdb">
-      <publishTime>04/20/2019 16:24:36</publishTime>
+      <publishTime>04/20/2019 19:26:21</publishTime>
     </File>
     <File Include="bin/Signal.Model.dll">
-      <publishTime>04/20/2019 16:24:36</publishTime>
+      <publishTime>04/20/2019 19:24:18</publishTime>
     </File>
     <File Include="bin/Signal.Model.pdb">
-      <publishTime>04/20/2019 16:24:36</publishTime>
+      <publishTime>04/20/2019 19:24:18</publishTime>
     </File>
     <File Include="bin/SignalRTest.dll">
-      <publishTime>04/20/2019 17:02:57</publishTime>
+      <publishTime>04/20/2019 19:54:09</publishTime>
     </File>
     <File Include="bin/SignalRTest.pdb">
-      <publishTime>04/20/2019 17:02:57</publishTime>
+      <publishTime>04/20/2019 19:54:09</publishTime>
+    </File>
+    <File Include="bin/Singla.Common.dll">
+      <publishTime>04/20/2019 19:54:05</publishTime>
+    </File>
+    <File Include="bin/Singla.Common.pdb">
+      <publishTime>04/20/2019 19:54:05</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>02/01/2018 12:17:18</publishTime>
@@ -229,7 +238,7 @@
       <publishTime>06/26/2018 02:10:30</publishTime>
     </File>
     <File Include="bin/zh-Hans/Microsoft.AspNet.SignalR.SystemWeb.resources.dll">
-      <publishTime>06/26/2018 02:10:37</publishTime>
+      <publishTime>06/26/2018 02:10:36</publishTime>
     </File>
     <File Include="bin/zh-Hans/Microsoft.Owin.Host.SystemWeb.resources.dll">
       <publishTime>02/13/2015 13:23:48</publishTime>
@@ -238,19 +247,19 @@
       <publishTime>02/13/2015 13:23:48</publishTime>
     </File>
     <File Include="bin/zh-Hans/Microsoft.Owin.Security.resources.dll">
-      <publishTime>02/13/2015 13:23:51</publishTime>
+      <publishTime>02/13/2015 13:23:50</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Net.Http.Formatting.resources.dll">
       <publishTime>02/01/2018 12:17:22</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Helpers.resources.dll">
-      <publishTime>01/28/2015 04:04:33</publishTime>
+      <publishTime>01/28/2015 04:04:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.resources.dll">
       <publishTime>02/01/2018 12:17:44</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Http.WebHost.resources.dll">
-      <publishTime>02/01/2018 12:19:31</publishTime>
+      <publishTime>02/01/2018 12:19:30</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Mvc.resources.dll">
       <publishTime>01/28/2015 04:02:22</publishTime>
@@ -259,16 +268,16 @@
       <publishTime>02/11/2014 15:28:40</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.Razor.resources.dll">
-      <publishTime>01/28/2015 04:02:35</publishTime>
+      <publishTime>01/28/2015 04:02:34</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.Deployment.resources.dll">
-      <publishTime>01/28/2015 04:04:33</publishTime>
+      <publishTime>01/28/2015 04:04:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.Razor.resources.dll">
-      <publishTime>01/28/2015 04:04:33</publishTime>
+      <publishTime>01/28/2015 04:04:32</publishTime>
     </File>
     <File Include="bin/zh-Hans/System.Web.WebPages.resources.dll">
-      <publishTime>01/28/2015 04:04:33</publishTime>
+      <publishTime>01/28/2015 04:04:32</publishTime>
     </File>
     <File Include="Content/bootstrap.css">
       <publishTime>09/01/2018 11:00:59</publishTime>
@@ -296,6 +305,9 @@
     </File>
     <File Include="Global.asax">
       <publishTime>09/01/2018 11:00:55</publishTime>
+    </File>
+    <File Include="log4net.config">
+      <publishTime>04/20/2019 19:44:16</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>09/01/2018 11:00:59</publishTime>
@@ -370,7 +382,7 @@
       <publishTime>09/01/2018 11:00:55</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>04/20/2019 15:05:54</publishTime>
+      <publishTime>04/20/2019 19:24:18</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/01/2018 11:00:55</publishTime>
@@ -385,7 +397,7 @@
       <publishTime>09/01/2018 11:00:55</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/20/2019 17:02:58</publishTime>
+      <publishTime>04/20/2019 19:32:33</publishTime>
     </File>
   </ItemGroup>
 </Project>

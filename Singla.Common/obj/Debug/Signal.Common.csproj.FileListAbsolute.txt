@@ -1,0 +1,8 @@
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\bin\Debug\Singla.Common.dll
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\bin\Debug\Singla.Common.pdb
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\bin\Debug\log4net.dll
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\bin\Debug\log4net.xml
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Signal.Common.csproj.CoreCompileInputs.cache
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Signal.Common.csproj.CopyComplete
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Singla.Common.dll
+D:\Data for work\Project\Work\SignalRTest\Singla.Common\obj\Debug\Singla.Common.pdb

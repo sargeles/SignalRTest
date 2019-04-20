@@ -12,7 +12,7 @@ using static SignalRTest.Hubs.ViewHub;
 using Newtonsoft.Json;
 using Signal.Model;
 using Signal.Interface;
-using Singla.Common;
+using Signal.Common;
 
 namespace SignalRTest.Controllers
 {
@@ -47,7 +47,7 @@ namespace SignalRTest.Controllers
                         });
                     }
                 }
-                LogHelper.loginfo.Info(pagedata);
+                LogHelper.Default.WriteInfo(JsonConvert.SerializeObject(pagedata));
                 string resultJson = JsonConvert.SerializeObject(pagedata);
                 SignalrServerToClient.BroadcastMessage(resultJson);
 
