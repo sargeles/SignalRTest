@@ -1,0 +1,211 @@
+﻿@{
+    ViewBag.Title = "SignalR";
+}
+
+
+
+
+<body>
+
+
+    @*<input type="text" id="userName" value="" style="display:none" />
+        <table id="tbtoday"></table>
+        <input type="text" id="txttalk" width="150" />
+        input type="button" id="btnclick" value="clickme" />
+        <input type="button" id="btntalk" value="发送" />*@
+    <div id="container" style="height: 100%"></div>
+    <div id="dvtalk">
+
+    </div>
+
+
+
+    <script type="text/javascript" src="~/Scripts/Signal/echarts.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/echarts-gl.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/ecStat.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/dataTool.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/china.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/world.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/bmap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/simplex.js"></script>
+    <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        var dom = document.getElementById("container");
+        var myChart = echarts.init(dom);
+        var app = {};
+        option = null;
+        var data1 = [
+        ];
+
+        var data2 = [
+        ];
+
+        var data3 = [
+        ];
+
+        var schema = [
+            { name: 'X', index: 0, text: '距展厅西' },
+            { name: 'Y', index: 1, text: '距展厅南' },
+            { name: 'Name', index: 2, text: '名称' },
+            { name: 'Age', index: 3, text: '年龄' },
+            { name: 'Number', index: 4, text: '手机号' },
+            { name: 'Sex', index: 5, text: '性别' },
+            { name: 'Time', index: 6, text: '进店时间' }
+        ];
+
+
+        var itemStyle = {
+            normal: {
+                opacity: 0.8,
+                shadowBlur: 10,
+                shadowOffsetX: 0,
+                shadowOffsetY: 0,
+                shadowColor: 'rgba(0, 0, 0, 0.5)'
+            }
+        };
+
+        option = {
+            backgroundColor: '#404a59',
+            color: [
+                '#dd4444', '#fec42c', '#80F1BE'
+            ],
+            legend: {
+                y: 'top',
+                data: ['1楼客流', '2楼客流', '3楼客流'],
+                textStyle: {
+                    color: '#fff',
+                    fontSize: 16
+                }
+            },
+            grid: {
+                x: '10%',
+                x2: '10%',
+                y: '10%',
+                y2: '10%'
+            },
+            tooltip: {
+                padding: 10,
+                backgroundColor: '#222',
+                borderColor: '#777',
+                borderWidth: 1,
+                formatter: function (obj) {
+                    var value = obj.value;
+                    return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                        + obj.seriesName + ' ' + schema[2].text + '：' + value[2]
+                        + '</div>'
+                        + schema[0].text + '：' + value[0] + '<br>'
+                        + schema[1].text + '：' + value[1] + '<br>'
+                        + schema[3].text + '：' + value[3] + '<br>'
+                        + schema[4].text + '：' + value[4] + '<br>'
+                        + schema[5].text + '：' + value[5] + '<br>'
+                        + schema[6].text + '：' + value[6] + '<br>';
+                }
+            },
+            xAxis: {
+                type: 'value',
+                name: '东↔西',
+                nameGap: 20,
+                nameTextStyle: {
+                    color: '#fff',
+                    fontSize: 16
+                },
+                max: 1000,
+                splitLine: {
+                    show: false
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#eee'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'value',
+                name: '南↔北',
+                nameLocation: 'end',
+                nameGap: 20,
+                nameTextStyle: {
+                    color: '#fff',
+                    fontSize: 16
+                },
+                max: 800,
+                axisLine: {
+                    lineStyle: {
+                        color: '#eee'
+                    }
+                },
+                splitLine: {
+                    show: false
+                }
+            },
+            series: [
+                {
+                    name: '1楼客流',
+                    type: 'scatter',
+                    itemStyle: itemStyle,
+                    data: data1
+                }, {
+                    name: '2楼客流',
+                    type: 'scatter',
+                    itemStyle: itemStyle,
+                    data: data2
+                }, {
+                    name: '3楼客流',
+                    type: 'scatter',
+                    itemStyle: itemStyle,
+                    data: data3
+                }
+            ]
+        };;
+        if (option && typeof option === "object") {
+            myChart.setOption(option, true);
+        }
+
+        $(function () {
+            var chat = $.connection.ViewHub;
+            init(chat);
+            $.connection.hub.start().done(function () {
+
+            })
+
+        })
+
+        function init(chat) {
+            chat.client.talk = function (message) {
+                refreshData(message);
+            }
+
+        }
+
+        function refreshData(data) {
+            if (!myChart) {
+                return;
+            }
+            debugger;
+            var optdata = JSON.parse(data);
+            //更新数据
+            var option = myChart.getOption();
+            option.series[0].data = [];
+            option.series[1].data = [];
+            option.series[2].data = [];
+            for (var i = 0; i < optdata.visitList.length; i++) {
+                let mycars = new Array();
+                mycars[0] = optdata.visitList[i].xAxis;
+                mycars[1] = optdata.visitList[i].yAxis;
+                mycars[2] = optdata.visitList[i].cusName;
+                mycars[3] = optdata.visitList[i].cusAge;
+                mycars[4] = optdata.visitList[i].cusMobtle;
+                mycars[5] = optdata.visitList[i].cusSex;
+                mycars[6] = optdata.visitList[i].cusVisitTime;
+                mycars[7] = optdata.visitList[i].cusMac;
+
+                option.series[optdata.visitList[i].floor].data.push(
+                    mycars
+                );
+            }
+            myChart.setOption(option);
+        }
+    </script>
+</body>

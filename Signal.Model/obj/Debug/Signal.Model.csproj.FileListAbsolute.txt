@@ -1,0 +1,6 @@
+D:\Data for work\Project\Work\SignalRTest\SignalRTest\Signal.Model\bin\Debug\Signal.Model.dll
+D:\Data for work\Project\Work\SignalRTest\SignalRTest\Signal.Model\bin\Debug\Signal.Model.pdb
+D:\Data for work\Project\Work\SignalRTest\SignalRTest\Signal.Model\obj\Debug\Signal.Model.csprojAssemblyReference.cache
+D:\Data for work\Project\Work\SignalRTest\SignalRTest\Signal.Model\obj\Debug\Signal.Model.csproj.CoreCompileInputs.cache
+D:\Data for work\Project\Work\SignalRTest\SignalRTest\Signal.Model\obj\Debug\Signal.Model.dll
+D:\Data for work\Project\Work\SignalRTest\SignalRTest\Signal.Model\obj\Debug\Signal.Model.pdb
