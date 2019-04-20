@@ -32,6 +32,22 @@
 
     <script type="text/javascript">
 
+
+        $(function () {
+            var chat = $.connection.ViewHub;
+            init(chat);
+            $.connection.hub.start().done(function () {
+
+            })
+
+        })
+
+        function init(chat) {
+            chat.client.talk = function (message) {
+                refreshData(message);
+            }
+
+        }
         var dom = document.getElementById("container");
         var myChart = echarts.init(dom);
         var app = {};
@@ -161,22 +177,6 @@
         };;
         if (option && typeof option === "object") {
             myChart.setOption(option, true);
-        }
-
-        $(function () {
-            var chat = $.connection.ViewHub;
-            init(chat);
-            $.connection.hub.start().done(function () {
-
-            })
-
-        })
-
-        function init(chat) {
-            chat.client.talk = function (message) {
-                refreshData(message);
-            }
-
         }
 
         function refreshData(data) {
