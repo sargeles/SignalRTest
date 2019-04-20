@@ -1,9 +1,5 @@
 *.sln
 .vs/
 packages/
-Signal.EF/bin/
-Signal.EF/obj/
-SignalRTest/bin/
-SignalRTest/obj/
-*/bin/
-*/obj/
+**/bin/
+**/obj/
