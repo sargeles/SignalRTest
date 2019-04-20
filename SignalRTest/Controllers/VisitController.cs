@@ -47,7 +47,7 @@ namespace SignalRTest.Controllers
                         });
                     }
                 }
-                LogHelper.loginfo.Info(pagedata);
+                LogHelper.WriteLog(JsonConvert.SerializeObject(pagedata));
                 string resultJson = JsonConvert.SerializeObject(pagedata);
                 SignalrServerToClient.BroadcastMessage(resultJson);
 

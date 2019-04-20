@@ -8,6 +8,7 @@ using Signal.Interface;
 using Signal.Model;
 using SignalRTest.Models;
 using Singla.Common;
+using Newtonsoft.Json;
 
 namespace SignalRTest.Controllers
 {
@@ -16,7 +17,7 @@ namespace SignalRTest.Controllers
         [HttpPost, Route("WifiPinPoint/Upload")]
         public string Upload(MacDataModel model)
         {
-            LogHelper.loginfo.Info(model);
+            LogHelper.WriteLog(JsonConvert.SerializeObject(model));
             List<string> items = model.message.Split(new string[] { "\r\n" }, StringSplitOptions.None).ToList();
             CusVisitModel list = new CusVisitModel();
 
