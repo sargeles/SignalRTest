@@ -12,6 +12,7 @@ using static SignalRTest.Hubs.ViewHub;
 using Newtonsoft.Json;
 using Signal.Model;
 using Signal.Interface;
+using Singla.Common;
 
 namespace SignalRTest.Controllers
 {
@@ -23,27 +24,49 @@ namespace SignalRTest.Controllers
 
             try
             {
+                CusVisitModel pagedata = new CusVisitModel();
                 DBModel db = new DBModel();
+                Random rd = new Random();
                 foreach (var i in model.visitList)
                 {
-                    cus_visit visit = new cus_visit()
+                    List<cus_visit> list = db.cus_visit.Where(m => m.VISIT_MAC == i.cusMac).ToList();
+                    if (list.Count() > 0)
                     {
-                        VISIT_MAC = i.cusMac,
-                        CUS_NAME = i.cusName,
-                        CUS_MOBILE = i.cusMobtle,
-                        CUS_AGE_RANGE = i.cusAge,
-                        CUS_SEX = i.cusSex,
-                        VISIT_TIME = Convert.ToDateTime(i.cusVisitTime),
-                        CUS_INFO_STATUS = "1",
-                        Guid = System.Guid.NewGuid().ToString("N")
-                    };
-
-                    db.cus_visit.Add(visit);
+                        var _m = list.First();
+                        pagedata.visitList.Add(new VisitModelList()
+                        {
+                            cusAge = _m.CUS_AGE_RANGE,
+                            cusMac = _m.VISIT_MAC,
+                            cusMobtle = _m.CUS_MOBILE,
+                            cusName = _m.CUS_NAME,
+                            cusSex = _m.CUS_SEX,
+                            cusVisitTime = Convert.ToString(_m.VISIT_TIME),
+                            floor = rd.Next(0, 3).ToString(),
+                            xAxis = i.xAxis,
+                            yAxis = rd.Next(0, 800).ToString()
+                        });
+                    }
                 }
-                db.SaveChanges();
-
-                string resultJson = JsonConvert.SerializeObject(model);
+                LogHelper.loginfo.Info(pagedata);
+                string resultJson = JsonConvert.SerializeObject(pagedata);
                 SignalrServerToClient.BroadcastMessage(resultJson);
+
+                //DBModel db = new DBModel();
+                //foreach (var m in model.visitList)
+                //{
+                //    db.cus_visit.Add(new cus_visit()
+                //    {
+                //        CUS_AGE_RANGE = m.cusAge,
+                //        VISIT_MAC = m.cusMac,
+                //        CUS_MOBILE = m.cusMobtle,
+                //        CUS_NAME = m.cusName,
+                //        CUS_SEX = m.cusSex,
+                //        VISIT_TIME = Convert.ToDateTime(m.cusVisitTime),
+                //        CUS_INFO_STATUS = "1",
+                //        Guid = System.Guid.NewGuid().ToString("N")
+                //    });
+                //}
+                //db.SaveChanges();
                 return "true";
             }
             catch (Exception ex)

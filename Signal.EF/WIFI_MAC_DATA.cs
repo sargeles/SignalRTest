@@ -54,7 +54,7 @@ namespace Signal.EF
         /// <summary>
         /// 上传时间
         /// </summary>
-        [Column(TypeName = "datetime")]
+        [Column(TypeName = "date")]
         public DateTime? UPLOAD_DATE { get; set; }
     }
 }
