@@ -277,6 +277,10 @@
       <Project>{0f74a889-94ab-4a3e-8b18-eaf5316e5ab3}</Project>
       <Name>Signal.Model</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Singla.Common\Singla.Common.csproj">
+      <Project>{aa8384cb-01f5-4ac8-84eb-583f8004bdcf}</Project>
+      <Name>Singla.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
