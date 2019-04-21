@@ -193,6 +193,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\ViewHub.cs" />
+    <Compile Include="Models\HeatmapVisitDataModel.cs" />
     <Compile Include="Models\MacDataModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup1.cs" />

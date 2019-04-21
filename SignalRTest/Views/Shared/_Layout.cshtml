@@ -1,20 +1,102 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - 我的 ASP.NET 应用程序</title>
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        $(function () {
+            var $wrap = $(".wrapper");
+            var $item = $(".item");
+            init();
+            function init() {
+                /*图片加载延迟执行，不延迟，第二次进入的速度快会直接闪现出现*/
+                setTimeout(function () {
+                    $item.addClass("transitionsx");
+                    $wrap.removeClass("init");
+                }, 200)
+
+                /*执行事件函数*/
+                bindEvent();
+            }
+
+            function bindEvent() {
+                $(".item").on("click", function () {
+                    $(this).addClass("active");
+                    $wrap.addClass("startShowItem");
+
+                })
+                $(".close").on("click", function (e) {
+                    e.stopPropagation();
+                    $(".active").removeClass("active");
+                    $wrap.removeClass("startShowItem");
+
+                })
+            }
+        });
+
+    </script>
 </head>
 <body style="margin:0px">
 
-    @Scripts.Render("~/bundles/jquery")
+
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/SignalR")
+    @Styles.Render("~/Content/css")
     @RenderSection("scripts", required: false)
-    <div style="height:946px;width:100%">
-        @RenderBody()
+
+    <div class="background" style="position:absolute;top:0px;left:0px;width:100%;height:100%"></div>
+    <div class=" wrapper init ">
+        <ul class="content">
+            <li class="item">
+                <div class="inner">
+                    <div class="bjPic">
+                        @RenderBody()
+                    </div>
+                    <div class="dir">
+                    </div>
+                    <div class="showBox">
+                        <div class="close">
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+
+            <li class="item">
+                <div class="inner">
+                    <div class="bjPic">
+                        @RenderPage("~/Views/Home/About.cshtml")
+                    </div>
+                    <div class="dir">
+                    </div>
+                    <div class="showBox">
+                        <div class="close">
+
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+            <li class="item">
+                <div class="inner">
+                    <div class="bjPic">
+                        @RenderPage("~/Views/Home/Contact.cshtml")
+                    </div>
+                    <div class="dir">
+                    </div>
+                    <div class="showBox">
+                        <div class="close">
+
+                        </div>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
     </div>
 
 </body>
