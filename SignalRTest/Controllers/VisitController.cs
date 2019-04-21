@@ -42,7 +42,7 @@ namespace SignalRTest.Controllers
                             cusVisitTime = Convert.ToString(_m.VISIT_TIME),
                             floor = rd.Next(0, 3).ToString(),
                             xAxis = i.xAxis,
-                            yAxis = rd.Next(0, 800)
+                            yAxis = rd.Next(0, 80)
                         });
                     }
                 }

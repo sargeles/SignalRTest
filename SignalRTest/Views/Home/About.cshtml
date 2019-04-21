@@ -59,7 +59,7 @@
                 formatter: function (obj) {
                     var value = obj.value;
                     return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
-                        + obj.seriesName + ' ' + schema[2].text + '：' + value[2]
+                         ' 人数 ：' + value[2]
                 }
             },
             animation: false,
@@ -70,7 +70,7 @@
             xAxis: {
                 type: 'category',
                 data: xAxisdata,
-                name: '东↔西',
+                name: '时间',
                 nameLocation: 'end',
                 nameGap: 20,
                 axisTick: 13,
@@ -87,7 +87,7 @@
             yAxis: {
                 type: 'category',
                 data: yAxisdata,
-                name: '南↔北',
+                name: '展位',
                 splitArea: {
                     show: true
                 }, nameTextStyle: {

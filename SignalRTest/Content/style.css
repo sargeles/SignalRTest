@@ -131,8 +131,8 @@ body {
 }
 .wrapper .content .item .inner .dir{
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 5%;
+    left: 80%;
     transform: translate(-50%, -50%);
     transition: opacity 0.5s linear 0.3s;
 }
