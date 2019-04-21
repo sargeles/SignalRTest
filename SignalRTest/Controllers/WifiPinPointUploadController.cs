@@ -109,7 +109,7 @@ namespace Signal.Controllers
                         for (var h = 0; h < hours; h++) 
                         {
                             //计算热度
-                            var value = CalculateHotValue(positions[p].Key, h, dataSource);
+                            var value = CalculateHotValue(positions[p].Key, today.AddHours(h-8), today.AddHours(h-7), dataSource);
                             list.visitHotspotLists.Add(new VisitHotspotList()
                             {
                                 xAxis = h,
@@ -137,15 +137,15 @@ namespace Signal.Controllers
             }
         }
 
-        private int CalculateHotValue(string deviceId, int hour, List<WIFI_MAC_DATA> dataSource)
+        private int CalculateHotValue(string deviceId, DateTime startTime, DateTime endTime, List<WIFI_MAC_DATA> dataSource)
         {
-            var source = dataSource.Where(d => d.DEVICE_ID == deviceId && d.UPLOAD_DATE.GetValueOrDefault().Hour == hour ).ToList();
+            var source = dataSource.Where(d => d.DEVICE_ID == deviceId && d.UPLOAD_DATE > startTime && d.UPLOAD_DATE < endTime).ToList();
             decimal value = 0;
 
             foreach (var d in source)
             {
                 decimal distance = decimal.Parse(d.DISTANCE);
-                value += distance > 0 && distance < 10 ? 10 - distance : 0;
+                value += distance > 0 && distance < 30 ? 30 - distance : 0;
             }
 
             return Decimal.ToInt32(value);
