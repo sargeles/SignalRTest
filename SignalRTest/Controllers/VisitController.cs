@@ -80,6 +80,7 @@ namespace SignalRTest.Controllers
             try
             {
                 CusVisitModel listPage = new CusVisitModel() { type = "VisitHotspot" };
+                listPage.visitHotspotLists = model.visitHotspotLists;
                 string resultJson = JsonConvert.SerializeObject(listPage); ;
                 SignalrServerToClient.BroadcastMessage(resultJson);
 
