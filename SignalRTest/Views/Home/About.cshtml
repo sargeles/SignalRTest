@@ -16,26 +16,10 @@
 
     <script type="text/javascript">
 
-        $(function () {
-            var chatAbout = $.connection.ViewHub;
-            initAbout(chatAbout);
-            $.connection.hub.start().done(function () {
-
-            })
-
-        })
-
-        function initAbout(chat) {
-            chat.client.talk = function (message) {
-                refreshData1(message);
-            }
-
-        }
         function refreshData1(data) {
             if (!myChart1) {
                 return;
             }
-            debugger;
             var optdata = JSON.parse(data);
             if (optdata.type != "VisitHotspot") { return; }
             //更新数据
@@ -45,7 +29,7 @@
                 let mycars = new Array();
                 mycars[0] = optdata.visitHotspotLists[i].xAxis;
                 mycars[1] = optdata.visitHotspotLists[i].yAxis;
-                mycars[2] = optdata.visitHotspotLists[i].Names;
+                mycars[2] = optdata.visitHotspotLists[i].Count;
                 option1.series[0].data.push(
                     mycars
                 );
@@ -57,14 +41,13 @@
         var myChart1 = echarts.init(dom);
         option1 = null;
 
-        var xAxisdata = ['50', '100', '150', '200', '250', '300',
-            '350', '400', '450', '500', '550',
-            '600', '650', '700', '750', '800', '850',
-            '900', '950', '1000', '1050', '1100', '1150', '1200', '1250', '1300'];
-        var yAxisdata = ['0-100', '100-200', '200-300',
-            '300-400', '400-500', '500-600', '600-700', '700-800'];
-        // [y:x:count]
-        var data = [[0, 0, 5], [6, 19, 0], [6, 20, 1], [6, 21, 2], [6, 22, 2], [6, 23, 6]];
+        var xAxisdata = ['1H', '2H', '3H', '4H', '5H', '6H',
+            '8H', '9H', '10H', '11H', '12H',
+            '13H', '14H', '15H', '16H', '17H', '18H',
+            '19H', '20H', '21H', '22H', '23H', '24H'];
+        var yAxisdata = ['Position1', 'Position2', 'Position3'];
+        // [x:y:count]
+        var data = [];
 
         data = data.map(function (item) {
             return [item[1], item[0], item[2] || '-'];
@@ -72,7 +55,12 @@
 
         option1 = {
             tooltip: {
-                position: 'top'
+                position: 'top',
+                formatter: function (obj) {
+                    var value = obj.value;
+                    return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                        + obj.seriesName + ' ' + schema[2].text + '：' + value[2]
+                }
             },
             animation: false,
             grid: {

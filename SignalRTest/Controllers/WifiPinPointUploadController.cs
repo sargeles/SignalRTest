@@ -63,7 +63,7 @@ namespace Signal.Controllers
                             data.IS_CONNECTED = fileds[4];
                             data.UPLOAD_DATE = DateTime.Parse(model.device_time.Replace("#", " "));
                             db.wifi_mac_data.Add(data);
-                            list.visitList.Add(new VisitModelList() { cusMac = data.PHONE_MAC_ADDRESS, xAxis = data.DISTANCE });
+                            list.visitList.Add(new VisitModelList() { cusMac = data.PHONE_MAC_ADDRESS, xAxis = Convert.ToDecimal(data.DISTANCE) });
                         }
                     }
                     db.SaveChanges();

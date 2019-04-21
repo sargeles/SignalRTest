@@ -42,7 +42,7 @@ namespace SignalRTest.Controllers
                             cusVisitTime = Convert.ToString(_m.VISIT_TIME),
                             floor = rd.Next(0, 3).ToString(),
                             xAxis = i.xAxis,
-                            yAxis = rd.Next(0, 800).ToString()
+                            yAxis = rd.Next(0, 800)
                         });
                     }
                 }
@@ -79,51 +79,11 @@ namespace SignalRTest.Controllers
 
             try
             {
-                CusVisitModel pagedata = new CusVisitModel();
-                if (model.type != "test")
-                {
-                    DBModel db = new DBModel();
-                    Random rd = new Random();
-                    foreach (var i in model.visitList)
-                    {
-                        List<cus_visit> list = db.cus_visit.Where(m => m.VISIT_MAC == i.cusMac).ToList();
-                        if (list.Count() > 0)
-                        {
-                            var _m = list.First();
-                            pagedata.visitList.Add(new VisitModelList()
-                            {
-                                cusName = _m.CUS_NAME,
-                                xAxis = i.xAxis,
-                                yAxis = rd.Next(0, 800).ToString()
-                            });
-                        }
-                    }
-                }
-                else
-                {
-                    pagedata = model;
-                }
-                for (int i = 0, length = pagedata.visitList.Count; i < length; i++) {
-                    pagedata.visitList[i].xAxis = Convert.ToString(Math.Floor(Convert.ToDecimal(pagedata.visitList[i].xAxis) / 50));
-                    pagedata.visitList[i].yAxis = Convert.ToString(Math.Floor(Convert.ToDecimal(pagedata.visitList[i].yAxis) / 100));
-                }
-                CusVisitsHotspotModel listPage = new CusVisitsHotspotModel() { type = "VisitHotspot" };
-                foreach (var i in pagedata.visitList.GroupBy(t => new { t.xAxis, t.yAxis })) {
-
-                    VisitHotspotList refPageModel = new VisitHotspotList();
-                    string names = string.Join(",",i.ToList().Select(t=>t.cusName).ToList());
-
-                    var _model = i.FirstOrDefault();
-                    refPageModel.xAxis = _model.xAxis;
-                    refPageModel.yAxis = _model.yAxis;
-                    refPageModel.Names = names;
-                    listPage.visitHotspotLists.Add(refPageModel);
-                }
-
+                CusVisitModel listPage = new CusVisitModel() { type = "VisitHotspot" };
                 string resultJson = JsonConvert.SerializeObject(listPage); ;
                 SignalrServerToClient.BroadcastMessage(resultJson);
 
-                
+
                 return "true";
             }
             catch (Exception ex)
@@ -139,7 +99,7 @@ namespace SignalRTest.Controllers
 
             try
             {
-                CusVisitModel pagedata = new CusVisitModel() { type= "VisitCircular" };
+                CusVisitModel pagedata = new CusVisitModel() { type = "VisitCircular" };
                 DBModel db = new DBModel();
                 Random rd = new Random();
                 foreach (var i in model.visitList)
@@ -158,7 +118,7 @@ namespace SignalRTest.Controllers
                             cusVisitTime = Convert.ToString(_m.VISIT_TIME),
                             floor = rd.Next(0, 3).ToString(),
                             xAxis = i.xAxis,
-                            yAxis = rd.Next(0, 800).ToString()
+                            yAxis = rd.Next(0, 800)
                         });
                     }
                 }
