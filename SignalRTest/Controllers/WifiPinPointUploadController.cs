@@ -33,7 +33,7 @@ namespace Signal.Controllers
             var ret3 = CalculateVisitDistribution(out errMsg, model);
             resultStr += string.Format("计算扇形图结果【{0}】：{1} \r\n", (ret3 ? true : false), string.IsNullOrEmpty(errMsg) ? "成功" : errMsg);
 
-            return string.Format("计算坐标图结果：");
+            return resultStr;
         }
 
         private bool CalculateVisitDistribution(out string errMsg, MacDataModel model)
@@ -96,7 +96,9 @@ namespace Signal.Controllers
                 using (var db = new DBModel())
                 {
                     //今天所有的纪录
-                    var dataSource = db.wifi_mac_data.Where(d => d.UPLOAD_DATE < today.AddHours(-8) && d.UPLOAD_DATE > today.AddDays(-1).AddHours(-8)).ToList();
+                    var dataSourceTimeStart = today.AddDays(-1).AddHours(-8);
+                    var dataSourceTimeEnd = DateTime.UtcNow;
+                    var dataSource = db.wifi_mac_data.Where(d => d.UPLOAD_DATE > dataSourceTimeStart && d.UPLOAD_DATE < dataSourceTimeEnd).ToList();
                     var positions = dataSource.GroupBy(g => g.DEVICE_ID).OrderBy(g => g.Key).ToList();
                     var hours = DateTime.Now.Hour + 1;
 
@@ -107,12 +109,12 @@ namespace Signal.Controllers
                         for (var h = 0; h < hours; h++) 
                         {
                             //计算热度
-                            var value = CalculateHotValue(positions[p].Key, today.AddHours(h), today.AddHours(h+1), dataSource);
-                            list.visitList.Add(new VisitModelList()
+                            var value = CalculateHotValue(positions[p].Key, h, dataSource);
+                            list.visitHotspotLists.Add(new VisitHotspotList()
                             {
-                                xAxis = h.ToString(),
-                                yAxis = p.ToString(),
-                                cusName = value.ToString()
+                                xAxis = h,
+                                yAxis = p,
+                                Count = value
                             });
                         }
                     }
@@ -135,18 +137,18 @@ namespace Signal.Controllers
             }
         }
 
-        private int CalculateHotValue(string deviceName, DateTime startTime, DateTime endTime, List<WIFI_MAC_DATA> dataSource)
+        private int CalculateHotValue(string deviceId, int hour, List<WIFI_MAC_DATA> dataSource)
         {
-            var source = dataSource.Where(d => d.DEVICE_ID == deviceName && d.UPLOAD_DATE >= startTime.AddHours(-8) && d.UPLOAD_DATE <= endTime.AddHours(-8)).ToList();
-            int value = 0;
+            var source = dataSource.Where(d => d.DEVICE_ID == deviceId && d.UPLOAD_DATE.GetValueOrDefault().Hour == hour ).ToList();
+            decimal value = 0;
 
             foreach (var d in source)
             {
-                int distance = int.Parse(d.DISTANCE);
+                decimal distance = decimal.Parse(d.DISTANCE);
                 value += distance > 0 && distance < 10 ? 10 - distance : 0;
             }
 
-            return value;
+            return Decimal.ToInt32(value);
         }
     }
 }
