@@ -41,14 +41,13 @@
         var myChart1 = echarts.init(dom);
         option1 = null;
 
-        var xAxisdata = ['50', '100', '150', '200', '250', '300',
-            '350', '400', '450', '500', '550',
-            '600', '650', '700', '750', '800', '850',
-            '900', '950', '1000', '1050', '1100', '1150', '1200', '1250', '1300'];
-        var yAxisdata = ['0-100', '100-200', '200-300',
-            '300-400', '400-500', '500-600', '600-700', '700-800'];
+        var xAxisdata = ['1H', '2H', '3H', '4H', '5H', '6H',
+            '8H', '9H', '10H', '11H', '12H',
+            '13H', '14H', '15H', '16H', '17H', '18H',
+            '19H', '20H', '21H', '22H', '23H', '24H'];
+        var yAxisdata = ['Position1', 'Position2', 'Position3'];
         // [x:y:count]
-        var data = [[0, 0, 5], [6, 19, 0], [6, 20, 1], [6, 21, 2], [6, 22, 2], [6, 23, 6]];
+        var data = [];
 
         data = data.map(function (item) {
             return [item[1], item[0], item[2] || '-'];
@@ -56,7 +55,12 @@
 
         option1 = {
             tooltip: {
-                position: 'top'
+                position: 'top',
+                formatter: function (obj) {
+                    var value = obj.value;
+                    return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                        + obj.seriesName + ' ' + schema[2].text + '：' + value[2]
+                }
             },
             animation: false,
             grid: {
