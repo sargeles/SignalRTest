@@ -16,26 +16,10 @@
 
     <script type="text/javascript">
 
-        $(function () {
-            var chatAbout = $.connection.ViewHub;
-            initAbout(chatAbout);
-            $.connection.hub.start().done(function () {
-
-            })
-
-        })
-
-        function initAbout(chat) {
-            chat.client.talk = function (message) {
-                refreshData1(message);
-            }
-
-        }
         function refreshData1(data) {
             if (!myChart1) {
                 return;
             }
-            debugger;
             var optdata = JSON.parse(data);
             if (optdata.type != "VisitHotspot") { return; }
             //更新数据
@@ -45,7 +29,7 @@
                 let mycars = new Array();
                 mycars[0] = optdata.visitHotspotLists[i].xAxis;
                 mycars[1] = optdata.visitHotspotLists[i].yAxis;
-                mycars[2] = optdata.visitHotspotLists[i].Names;
+                mycars[2] = optdata.visitHotspotLists[i].Count;
                 option1.series[0].data.push(
                     mycars
                 );
@@ -63,7 +47,7 @@
             '900', '950', '1000', '1050', '1100', '1150', '1200', '1250', '1300'];
         var yAxisdata = ['0-100', '100-200', '200-300',
             '300-400', '400-500', '500-600', '600-700', '700-800'];
-        // [y:x:count]
+        // [x:y:count]
         var data = [[0, 0, 5], [6, 19, 0], [6, 20, 1], [6, 21, 2], [6, 22, 2], [6, 23, 6]];
 
         data = data.map(function (item) {

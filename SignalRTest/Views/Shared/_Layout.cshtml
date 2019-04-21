@@ -99,5 +99,25 @@
         </ul>
     </div>
 
-</body>
-</html>
+    <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var chatIndex = $.connection.ViewHub;
+            initIndex(chatIndex);
+            $.connection.hub.start().done(function () {
+
+            })
+
+        })
+
+        function initIndex(chat) {
+            chat.client.talk = function (message) {
+                debugger;
+                refreshData(message);
+                refreshData1(message);
+            }
+
+        }
+    </script>
+</body >
+</html >

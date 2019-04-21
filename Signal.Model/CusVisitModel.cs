@@ -11,11 +11,34 @@ namespace Signal.Model
         public CusVisitModel()
         {
             visitList = new List<VisitModelList>();
+            visitHotspotLists = new List<VisitHotspotList>();
         }
         public string type { get; set; }
         public List<VisitModelList> visitList { get; set; }
 
+        public List<VisitHotspotList> visitHotspotLists { get; set; }
+
+
     }
+
+    /// <summary>
+    /// 热力图
+    /// </summary>
+    public class VisitHotspotList
+    {
+
+        public int xAxis { get; set; }
+
+        public int yAxis { get; set; }
+
+        public int Count { get; set; }
+
+        public string[] Macs { get; set; }
+    }
+
+    /// <summary>
+    /// 点状图
+    /// </summary>
     public class VisitModelList
     {
         /// <summary>
@@ -26,12 +49,12 @@ namespace Signal.Model
         /// <summary>
         /// 展厅X轴
         /// </summary>
-        public string xAxis { get; set; }
+        public decimal xAxis { get; set; }
 
         /// <summary>
         /// 展厅Y轴
         /// </summary>
-        public string yAxis { get; set; }
+        public decimal yAxis { get; set; }
 
         /// <summary>
         /// 名称
@@ -62,5 +85,6 @@ namespace Signal.Model
         /// 楼层
         /// </summary>
         public string floor { get; set; }
+
     }
 }

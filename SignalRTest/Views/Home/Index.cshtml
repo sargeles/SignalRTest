@@ -30,21 +30,7 @@
     <script type="text/javascript">
 
 
-        $(function () {
-            var chatIndex = $.connection.ViewHub;
-            initIndex(chatIndex);
-            $.connection.hub.start().done(function () {
-
-            })
-
-        })
-
-        function initIndex(chat) {
-            chat.client.talk = function (message) {
-                refreshData(message);
-            }
-
-        }
+        
         var dom = document.getElementById("container");
         dom.style.width = window.innerWidth+'px';
         var myChart = echarts.init(dom);
@@ -180,7 +166,6 @@
             if (!myChart) {
                 return;
             }
-            debugger;
             var optdata = JSON.parse(data);
             if (optdata.type != "VisitDistribution") { return; }
             //更新数据
