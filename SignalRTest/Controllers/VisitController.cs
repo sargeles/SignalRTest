@@ -73,7 +73,6 @@ namespace SignalRTest.Controllers
             }
         }
 
-
         [HttpGet, Route("Values/VisitHotspot")]
         public string VisitHotspot(CusVisitModel model)
         {
@@ -131,6 +130,37 @@ namespace SignalRTest.Controllers
             {
                 return "false";
             }
+        }
+
+        [HttpGet, Route("Visit/Heatmap")]
+        public string Heatmap()
+        {
+            List<HeatmapVisitDataModel> visitdata = new List<HeatmapVisitDataModel>();
+            DateTime now = DateTime.UtcNow;
+
+            try
+            {
+                //using能及时释放资源,例如数据库连接异常，可以即使将上下文释放
+                using (var db = new DBModel())
+                {
+                    var dataSource = db.wifi_mac_data.Where(d => d.UPLOAD_DATE < now && d.UPLOAD_DATE > now.AddDays(-1)).ToList();
+                    foreach (var item in dataSource)
+                    {
+                        //分组
+                        //分时
+                        //计算热度
+                    }
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Default.WriteError(ex.Message, ex);
+                return "Error";
+            }
+
+            string resultJson = JsonConvert.SerializeObject(visitdata);
+            return resultJson;
         }
     }
 }

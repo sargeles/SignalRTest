@@ -172,28 +172,28 @@
       <publishTime>04/20/2019 19:26:21</publishTime>
     </File>
     <File Include="bin/Signal.Interface.dll">
-      <publishTime>04/20/2019 19:26:21</publishTime>
+      <publishTime>04/21/2019 11:55:52</publishTime>
     </File>
     <File Include="bin/Signal.Interface.pdb">
-      <publishTime>04/20/2019 19:26:21</publishTime>
+      <publishTime>04/21/2019 11:55:52</publishTime>
     </File>
     <File Include="bin/Signal.Model.dll">
-      <publishTime>04/20/2019 19:24:18</publishTime>
+      <publishTime>04/21/2019 11:55:52</publishTime>
     </File>
     <File Include="bin/Signal.Model.pdb">
-      <publishTime>04/20/2019 19:24:18</publishTime>
+      <publishTime>04/21/2019 11:55:52</publishTime>
     </File>
     <File Include="bin/SignalRTest.dll">
-      <publishTime>04/20/2019 19:54:09</publishTime>
+      <publishTime>04/21/2019 14:02:11</publishTime>
     </File>
     <File Include="bin/SignalRTest.pdb">
-      <publishTime>04/20/2019 19:54:09</publishTime>
+      <publishTime>04/21/2019 14:02:11</publishTime>
     </File>
     <File Include="bin/Singla.Common.dll">
-      <publishTime>04/20/2019 19:54:05</publishTime>
+      <publishTime>04/21/2019 11:55:52</publishTime>
     </File>
     <File Include="bin/Singla.Common.pdb">
-      <publishTime>04/20/2019 19:54:05</publishTime>
+      <publishTime>04/21/2019 11:55:52</publishTime>
     </File>
     <File Include="bin/System.Net.Http.Formatting.dll">
       <publishTime>02/01/2018 12:17:18</publishTime>
@@ -376,19 +376,19 @@
       <publishTime>10/26/1985 16:15:00</publishTime>
     </File>
     <File Include="Views/Home/About.cshtml">
-      <publishTime>09/01/2018 11:00:55</publishTime>
+      <publishTime>04/21/2019 11:53:28</publishTime>
     </File>
     <File Include="Views/Home/Contact.cshtml">
-      <publishTime>09/01/2018 11:00:55</publishTime>
+      <publishTime>04/21/2019 11:53:28</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>04/20/2019 19:24:18</publishTime>
+      <publishTime>04/21/2019 11:53:28</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/01/2018 11:00:55</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>04/20/2019 12:09:46</publishTime>
+      <publishTime>04/21/2019 11:53:28</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/01/2018 11:00:55</publishTime>
@@ -397,7 +397,7 @@
       <publishTime>09/01/2018 11:00:55</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/20/2019 19:32:33</publishTime>
+      <publishTime>04/21/2019 11:56:04</publishTime>
     </File>
   </ItemGroup>
 </Project>
