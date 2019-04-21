@@ -49,6 +49,7 @@ namespace Signal.Controllers
                     db.SaveChanges();
                 }
 
+                LogHelper.Default.WriteInfo(JsonConvert.SerializeObject(list));
                 VisitsBusinessInterface businessInterface = new VisitController();
                 businessInterface.VisitAdd(list);
             }catch(Exception ex)
