@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "SignalR";
+    ViewBag.Title = "SignalRA";
 }
 
 
@@ -14,9 +14,6 @@
         input type="button" id="btnclick" value="clickme" />
         <input type="button" id="btntalk" value="发送" />*@
     <div id="container" style="height: 100%"></div>
-    <div id="dvtalk">
-
-    </div>
 
 
 
@@ -34,23 +31,23 @@
 
 
         $(function () {
-            var chat = $.connection.ViewHub;
-            init(chat);
+            var chatIndex = $.connection.ViewHub;
+            initIndex(chatIndex);
             $.connection.hub.start().done(function () {
 
             })
 
         })
 
-        function init(chat) {
+        function initIndex(chat) {
             chat.client.talk = function (message) {
                 refreshData(message);
             }
 
         }
         var dom = document.getElementById("container");
+        dom.style.width = window.innerWidth+'px';
         var myChart = echarts.init(dom);
-        var app = {};
         option = null;
         var data1 = [
         ];
@@ -174,7 +171,7 @@
                     data: data3
                 }
             ]
-        };;
+        };
         if (option && typeof option === "object") {
             myChart.setOption(option, true);
         }
@@ -185,6 +182,7 @@
             }
             debugger;
             var optdata = JSON.parse(data);
+            if (optdata.type != "VisitDistribution") { return; }
             //更新数据
             var option = myChart.getOption();
             option.series[0].data = [];

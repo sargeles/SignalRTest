@@ -9,6 +9,10 @@ namespace Signal.Interface
 {
     public interface VisitsBusinessInterface
     {
-        string VisitAdd(CusVisitModel model);
+        string VisitDistribution(CusVisitModel model);
+
+        string VisitHotspot(CusVisitModel model);
+
+        string VisitCircular(CusVisitModel model);
     }
 }

@@ -12,6 +12,7 @@ namespace Signal.Model
         {
             visitList = new List<VisitModelList>();
         }
+        public string type { get; set; }
         public List<VisitModelList> visitList { get; set; }
 
     }

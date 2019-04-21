@@ -204,6 +204,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\130.jpg" />
+    <Content Include="img\132.jpg" />
+    <Content Include="img\133.jpg" />
+    <Content Include="img\134.jpg" />
+    <Content Include="img\135.jpg" />
+    <Content Include="img\136.jpg" />
+    <Content Include="img\137.jpg" />
+    <Content Include="img\139.jpg" />
+    <Content Include="img\timg.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -211,7 +220,9 @@
     </Content>
     <Content Include="log4net.config" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\Local_Debug.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Content\style.css" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -251,6 +262,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -278,9 +290,9 @@
       <Project>{0f74a889-94ab-4a3e-8b18-eaf5316e5ab3}</Project>
       <Name>Signal.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Singla.Common\Singla.Common.csproj">
+    <ProjectReference Include="..\Singla.Common\Signal.Common.csproj">
       <Project>{aa8384cb-01f5-4ac8-84eb-583f8004bdcf}</Project>
-      <Name>Singla.Common</Name>
+      <Name>Signal.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

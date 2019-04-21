@@ -1,17 +1,106 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    ViewBag.Title = "SignalRC";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<body>
+    <div id="container2" style="height: 100%"></div>
+    <script type="text/javascript" src="~/Scripts/Signal/echarts.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/echarts-gl.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/ecStat.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/dataTool.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/china.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/world.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/bmap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Signal/simplex.js"></script>
+    <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+    <script type="text/javascript">
+        var dom = document.getElementById("container2");
+        dom.style.width = window.innerWidth + 'px';
+        var myChart2 = echarts.init(dom);
+        option2 = null;
+
+        var xAxisdata1 = ['50', '100', '150', '200', '250', '300',
+            '350', '400', '450', '500', '550',
+            '600', '650', '700', '750', '800', '850',
+            '900', '950', '1000', '1050', '1100', '1150', '1200', '1250', '1300'];
+        var yAxisdata1 = ['0-100', '100-200', '200-300',
+            '300-400', '400-500', '500-600', '600-700', '700-800'];
+
+        var data1 = [[0, 0, 5], [6, 19, 0], [6, 20, 1], [6, 21, 2], [6, 22, 2], [6, 23, 6]];
+
+        data1 = data1.map(function (item) {
+            return [item[1], item[0], item[2] || '-'];
+        });
+
+        option2 = {
+            tooltip: {
+                position: 'top'
+            },
+            animation: false,
+            grid: {
+                height: '50%',
+                y: '10%'
+            },
+            xAxis: {
+                type: 'category',
+                data: xAxisdata1,
+                name: '南↔北',
+                nameLocation: 'end',
+                nameGap: 20,
+                axisTick: 13,
+                nameTextStyle: {
+                    color: '#fff',
+                    fontSize: 16
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#eee'
+                    }
+                }
+            },
+            yAxis: {
+                type: 'category',
+                data: yAxisdata1,
+                splitArea: {
+                    show: true
+                }, nameTextStyle: {
+                    color: '#fff',
+                    fontSize: 16
+                },
+                axisLine: {
+                    lineStyle: {
+                        color: '#eee'
+                    }
+                }
+            },
+            visualMap: {
+                min: 0,
+                max: 10,
+                calculable: true,
+                orient: 'horizontal',
+                left: 'center',
+                bottom: '15%'
+            },
+            series: [{
+                name: 'Punch Card',
+                type: 'heatmap',
+                data: data1,
+                label: {
+                    normal: {
+                        show: true
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }]
+        };;
+        if (option2 && typeof option2 === "object") {
+            myChart2.setOption(option2, true);
+        }
+    </script>
+</body>

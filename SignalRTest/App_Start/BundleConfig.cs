@@ -24,8 +24,7 @@ namespace SignalRTest
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/style.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/SignalR").Include(
                 "~/Scripts/jquery.signalR-2.3.0.js"
