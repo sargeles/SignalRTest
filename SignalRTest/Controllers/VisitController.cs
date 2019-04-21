@@ -101,29 +101,8 @@ namespace SignalRTest.Controllers
             try
             {
                 CusVisitModel pagedata = new CusVisitModel() { type = "VisitCircular" };
-                DBModel db = new DBModel();
-                Random rd = new Random();
-                foreach (var i in model.visitList)
-                {
-                    List<cus_visit> list = db.cus_visit.Where(m => m.VISIT_MAC == i.cusMac).ToList();
-                    if (list.Count() > 0)
-                    {
-                        var _m = list.First();
-                        pagedata.visitList.Add(new VisitModelList()
-                        {
-                            cusAge = _m.CUS_AGE_RANGE,
-                            cusMac = _m.VISIT_MAC,
-                            cusMobtle = _m.CUS_MOBILE,
-                            cusName = _m.CUS_NAME,
-                            cusSex = _m.CUS_SEX,
-                            cusVisitTime = Convert.ToString(_m.VISIT_TIME),
-                            floor = rd.Next(0, 3).ToString(),
-                            xAxis = i.xAxis,
-                            yAxis = rd.Next(0, 800)
-                        });
-                    }
-                }
-                string resultJson = JsonConvert.SerializeObject(pagedata);
+                pagedata.visitHotspotLists = model.visitHotspotLists;
+                string resultJson = JsonConvert.SerializeObject(pagedata); ;
                 SignalrServerToClient.BroadcastMessage(resultJson);
                 return "true";
             }

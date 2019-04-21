@@ -126,7 +126,7 @@ namespace Signal.Controllers
                 LogHelper.Default.WriteInfo(JsonConvert.SerializeObject(list));
                 VisitsBusinessInterface businessInterface = new VisitController();
                 businessInterface.VisitHotspot(list);
-
+                businessInterface.VisitCircular(list);
                 return true;
             }
             catch (Exception ex)
@@ -145,7 +145,7 @@ namespace Signal.Controllers
             foreach (var d in source)
             {
                 decimal distance = decimal.Parse(d.DISTANCE);
-                value += distance > 0 && distance < 30 ? 30 - distance : 0;
+                value += distance > 0 && distance < 15 ? 15 - distance : 0;
             }
 
             return Decimal.ToInt32(value);

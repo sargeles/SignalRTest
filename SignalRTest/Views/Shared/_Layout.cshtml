@@ -89,7 +89,7 @@
                         @RenderPage("~/Views/Home/Contact.cshtml")
                     </div>
                     <div class="dir">
-                        客户热度
+                        客户分析
                     </div>
                     <div class="showBox">
                         <div class="close">
@@ -115,9 +115,9 @@
 
         function initIndex(chat) {
             chat.client.talk = function (message) {
-                debugger;
                 refreshData(message);
                 refreshData1(message);
+                refreshData2(message);
             }
 
         }

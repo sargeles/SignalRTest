@@ -14,40 +14,34 @@
     <script type="text/javascript" src="~/Scripts/Signal/simplex.js"></script>
 
     <script type="text/javascript">
+        function refreshData2(data) {
+            if (!myChart2) {
+                return;
+            }
+            var optdata = JSON.parse(data);
+            if (optdata.type != "VisitCircular") { return; }
+            debugger;
+            //更新数据
+            var option2 = myChart2.getOption();
+            option2.series[0].data = [];
+            for (var i = 0; i < optdata.visitHotspotLists.length; i++) {
+                option2.series[0].data.push(
+                    optdata.visitHotspotLists[i].Count
+                );
+            }
+            myChart2.setOption(option2);
+        }
         var dom = document.getElementById("container2");
         dom.style.width = window.innerWidth + 'px';
         var myChart2 = echarts.init(dom);
         option2 = null;
-
-        var xAxisdata1 = ['50', '100', '150', '200', '250', '300',
-            '350', '400', '450', '500', '550',
-            '600', '650', '700', '750', '800', '850',
-            '900', '950', '1000', '1050', '1100', '1150', '1200', '1250', '1300'];
-        var yAxisdata1 = ['0-100', '100-200', '200-300',
-            '300-400', '400-500', '500-600', '600-700', '700-800'];
-
-        var data1 = [[0, 0, 5], [6, 19, 0], [6, 20, 1], [6, 21, 2], [6, 22, 2], [6, 23, 6]];
-
-        data1 = data1.map(function (item) {
-            return [item[1], item[0], item[2] || '-'];
-        });
-
         option2 = {
-            tooltip: {
-                position: 'top'
-            },
-            animation: false,
-            grid: {
-                height: '50%',
-                y: '10%'
-            },
             xAxis: {
                 type: 'category',
-                data: xAxisdata1,
-                name: '南↔北',
-                nameLocation: 'end',
-                nameGap: 20,
-                axisTick: 13,
+                data: ['1H', '2H', '3H', '4H', '5H', '6H', '7H',
+                    '8H', '9H', '10H', '11H', '12H',
+                    '13H', '14H', '15H', '16H', '17H', '18H',
+                    '19H', '20H', '21H', '22H', '23H', '24H'],
                 nameTextStyle: {
                     color: '#fff',
                     fontSize: 16
@@ -58,12 +52,13 @@
                     }
                 }
             },
+            backgroundColor: '#404a59',
+            color: [
+                '#dd4444', '#fec42c', '#80F1BE'
+            ],
             yAxis: {
-                type: 'category',
-                data: yAxisdata1,
-                splitArea: {
-                    show: true
-                }, nameTextStyle: {
+                type: 'value',
+                nameTextStyle: {
                     color: '#fff',
                     fontSize: 16
                 },
@@ -73,31 +68,27 @@
                     }
                 }
             },
-            visualMap: {
-                min: 0,
-                max: 10,
-                calculable: true,
-                orient: 'horizontal',
-                left: 'center',
-                bottom: '15%'
-            },
             series: [{
-                name: 'Punch Card',
-                type: 'heatmap',
-                data: data1,
-                label: {
+                data: [],
+                type: 'line',
+                symbol: 'triangle',
+                symbolSize: 20,
+                lineStyle: {
                     normal: {
-                        show: true
+                        color: 'green',
+                        width: 4,
+                        type: 'dashed'
                     }
                 },
                 itemStyle: {
-                    emphasis: {
-                        shadowBlur: 10,
-                        shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    normal: {
+                        borderWidth: 3,
+                        borderColor: 'yellow',
+                        color: 'blue'
                     }
                 }
             }]
-        };;
+        };
         if (option2 && typeof option2 === "object") {
             myChart2.setOption(option2, true);
         }
